@@ -39,7 +39,7 @@ Resources:
     Properties:
       Handler: "index.lambda_handler"
       Role: !GetAtt JITRDeviceProvisionerRole.Arn
-      Runtime: "nodejs8.10"
+      Runtime: "nodejs6.10"
       Timeout: 30
       Code:
         ZipFile: |
