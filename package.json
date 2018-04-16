@@ -1,0 +1,27 @@
+{
+  "name": "cloud-jitr",
+  "version": "0.1.0",
+  "description": "CloudFormation template for setting up JITR in AWS IoT",
+  "main": "index.js",
+  "scripts": {
+    "create-stack": "node scripts/create-stack.js",
+    "validate-stack": "node scripts/validate-stack.js",
+    "register-ca-cert": "scripts/register-ca-cert.sh",
+    "create-device-cert": "scripts/create-device-cert.sh",
+    "connect-device": "node scripts/connect-device.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrodem/cloud-jitr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrodem/cloud-jitr/issues"
+  },
+  "homepage": "https://github.com/mrodem/cloud-jitr#readme",
+  "dependencies": {
+    "aws-iot-device-sdk": "^2.2.1",
+    "cfn": "^1.2.0"
+  }
+}
