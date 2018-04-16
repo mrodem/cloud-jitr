@@ -68,7 +68,7 @@ function generatePolicyDocument(region, accountId, certificateId) {
     };
 }
 
-module.exports.handler = function (event, context, callback) {
+exports.handler = function (event, context, callback) {
     const region = process.env.AWS_REGION;
     const accountId = event.awsAccountId.toString().trim();
     const certificateId = event.certificateId.toString().trim();
@@ -90,7 +90,10 @@ module.exports.handler = function (event, context, callback) {
         newStatus: 'ACTIVE'
     };
 
-    const iot = new AWS.Iot({'region': region, apiVersion: '2015-05-28'});
+    const iot = new AWS.Iot({
+        region,
+        apiVersion: '2015-05-28'
+    });
 
     createPolicy(iot, policyOptions)
         .then(() => attachPrincipalPolicy(iot, attachPolicyOptions))
