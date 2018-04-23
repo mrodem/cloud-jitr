@@ -1,0 +1,66 @@
+Resources:
+  JITRDeviceProvisionerRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "lambda.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Path: "/"
+      Policies:
+        - PolicyName: "JITRDeviceProvisionerPolicy"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: "arn:aws:logs:*:*:*"
+              - Effect: "Allow"
+                Action:
+                  - "iot:UpdateCertificate"
+                  - "iot:DescribeCertificate"
+                  - "iot:CreatePolicy"
+                  - "iot:AttachPrincipalPolicy"
+                  - "iot:AttachThingPrincipal"
+                  - "iot:GetPolicy"
+                  - "iot:CreateThing"
+                Resource: "*"
+      RoleName: JITRDeviceProvisionerRole
+
+  JITRDeviceProvisionerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: "index.handler"
+      Role: !GetAtt JITRDeviceProvisionerRole.Arn
+      Runtime: "nodejs6.10"
+      Timeout: 30
+      Code: ./lambda/index.js
+
+  CertificateRegisteredTopicRule:
+    Type: "AWS::IoT::TopicRule"
+    Properties:
+      RuleName: CertificateRegisteredTopicRule
+      TopicRulePayload:
+        RuleDisabled: false
+        Sql: >-
+          SELECT * FROM '$aws/events/certificates/registered/#'
+        Actions:
+          - Lambda:
+              FunctionArn: !GetAtt JITRDeviceProvisionerFunction.Arn
+
+  JITRDeviceProvisionerFunctionPermissions:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      FunctionName: !GetAtt JITRDeviceProvisionerFunction.Arn
+      Action: "lambda:InvokeFunction"
+      Principal: "iot.amazonaws.com"
