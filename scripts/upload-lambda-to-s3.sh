@@ -23,3 +23,5 @@ aws cloudformation package \
     --template $TEMPLATES_DIR/cloud-jitr-setup.yaml \
     --s3-bucket $S3_BUCKET_NAME \
     --output-template-file $TEMPLATES_DIR/cloud-jitr-setup-with-s3-bucket.yaml
+
+echo "Uploaded Lambda function to S3 bucket $S3_BUCKET_NAME"
