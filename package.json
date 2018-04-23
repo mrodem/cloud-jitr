@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "create-stack": "npm run upload-lambda-to-s3 && node scripts/create-stack.js",
-    "delete-stack": "node scripts/delete-stack.js",
+    "delete-stack": "node scripts/delete-stack.js && npm run delete-lambda-from-s3",
     "validate-stack": "node scripts/validate-stack.js",
     "register-ca-cert": "scripts/register-ca-cert.sh",
     "create-device-cert": "scripts/create-device-cert.sh",
     "connect-device": "node scripts/connect-device.js",
-    "upload-lambda-to-s3": "scripts/upload-lambda-to-s3.sh"
+    "upload-lambda-to-s3": "scripts/upload-lambda-to-s3.sh",
+    "delete-lambda-from-s3": "scripts/delete-lambda-from-s3.sh"
   },
   "repository": {
     "type": "git",

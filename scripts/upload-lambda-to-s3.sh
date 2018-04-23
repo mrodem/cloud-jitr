@@ -10,7 +10,7 @@ set -x -e
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TEMPLATES_DIR=$SCRIPT_DIR/../templates
-S3_BUCKET_NAME=aws-iot-jitr
+S3_BUCKET_NAME=$USER-aws-iot-jitr-lambda
 REGION=us-east-1
 
 if aws s3api head-bucket --bucket $S3_BUCKET_NAME --region $REGION; then
