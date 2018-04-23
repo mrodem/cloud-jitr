@@ -12,7 +12,7 @@ const device = awsIot.device({
 });
 
 device.on('connect', () => {
-    console.log('Device connected');
+    console.log('connected');
 });
 
 device.on('close', () => {
