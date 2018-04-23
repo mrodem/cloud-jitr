@@ -4,11 +4,13 @@
   "description": "CloudFormation template for setting up JITR in AWS IoT",
   "main": "index.js",
   "scripts": {
-    "create-stack": "node scripts/create-stack.js",
+    "create-stack": "npm run upload-lambda-to-s3 && node scripts/create-stack.js",
+    "delete-stack": "node scripts/delete-stack.js",
     "validate-stack": "node scripts/validate-stack.js",
     "register-ca-cert": "scripts/register-ca-cert.sh",
     "create-device-cert": "scripts/create-device-cert.sh",
-    "connect-device": "node scripts/connect-device.js"
+    "connect-device": "node scripts/connect-device.js",
+    "upload-lambda-to-s3": "scripts/upload-lambda-to-s3.sh"
   },
   "repository": {
     "type": "git",

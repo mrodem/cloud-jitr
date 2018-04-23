@@ -6,4 +6,4 @@ cfn({
   awsConfig: {
     region: 'us-east-1'
   },
-}, 'cloud-jitr-setup.yaml');
+}, 'templates/cloud-jitr-setup-with-s3-bucket.yaml');
