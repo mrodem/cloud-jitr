@@ -77,6 +77,6 @@ The project includes a simple script that connects using the AWS IoT Device SDK:
 
     npm run connect-device
 
-When connection, the JITR process is initiated for the device in AWS IoT. It will be disconnected and attempt to reconnect for a few seconds. Once the device has been registered, the connection will succeed. When running the same command again, the device is already set up, and will immediately be connected.
+This will ask for the endpoint for AWS IoT, which can be found on [https://console.aws.amazon.com/iot/home?region=us-east-1#/settings](https://console.aws.amazon.com/iot/home?region=us-east-1#/settings). When connecting, the JITR process is initiated for the device in AWS IoT. It will be disconnected and attempt to reconnect for a few seconds. Once the device has been registered, the connection will succeed. When running the same command again, the device is already set up, and will immediately be connected.
 
 The certificate, policy, and Thing that was created during JITR can be examined on https://console.aws.amazon.com/iot/.
