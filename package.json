@@ -25,6 +25,7 @@
   "homepage": "https://github.com/mrodem/cloud-jitr#readme",
   "dependencies": {
     "aws-iot-device-sdk": "^2.2.1",
-    "cfn": "^1.2.0"
+    "cfn": "^1.2.0",
+    "inquirer": "^5.2.0"
   }
 }
