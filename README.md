@@ -12,7 +12,9 @@ This project automates the JITR setup by providing the following:
 - A CloudFormation template that sets up the AWS IoT JITR stack: [cloud-jitr-setup.yaml](templates/cloud-jitr-setup.yaml)
 - A Lambda function that parses the CN from the device certificate, attaches a policy, and registers the device in the Thing registry: [lambda/index.js](lambda/index.js)
 
-When everything is set up, the [connect-device.js](scripts/connect-device.js) script can be run to test a device connection. Installation and instructions are described below.
+When everything is set up, the [connect-device.js](scripts/connect-device.js) script can be run to test a device connection.
+
+Installation and instructions are described below. The setup is currently done for the AWS region `us-east-1`. Setting up in a different region requires editing the scripts manually.
 
 ## Requirements
 
